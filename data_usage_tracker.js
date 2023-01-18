@@ -52,14 +52,12 @@ export default function DataUsageTracker(db) {
         async function sendDataToAnotherUser(from_usercode_code,to_user_code,airtime)  {
             let user1=  await findUser(from_usercode_code);
             let user2=  await findUser(to_user_code);
+
             await db.none("update learner set data_balance= data_balance -$1 where usercode=$2",[airtime,from_usercode_code])
 
 }
 
-
-
-        
-    return {
+ return {
         registerUser,
         findUser,
         registerAppUsage,

@@ -23,6 +23,7 @@
   "homepage": "https://github.com/codex-academy/data_usage_tracker_app#readme",
   "dependencies": {
     "mocha": "^10.2.0",
-    "pg-promise": "^11.0.2"
+    "pg-promise": "^11.0.2",
+    "uid": "^2.0.1"
   }
 }

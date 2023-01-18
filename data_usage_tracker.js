@@ -27,6 +27,14 @@ export default function DataUsageTracker(db) {
         }
         return total;
     }
+    async function totalUsage(){
+        let usage = await db.any("select * from learner_application_usage join application on application.id = app_id ");
+        let total = 0;
+        for(let i=0; i< usage.length; i++){
+            total += usage[i].minutes_used * usage[i].usage_per_minute;
+        }
+        return total;
+    }
 
     async function availableData(usercode)	{
         let user = await findUser(usercode);
@@ -46,16 +54,11 @@ export default function DataUsageTracker(db) {
             let user2=  await findUser(to_user_code);
             await db.none("update learner set data_balance= data_balance -$1 where usercode=$2",[airtime,from_usercode_code])
 
+}
+
 
 
         
-    }
-
-
-
-
-
-
     return {
         registerUser,
         findUser,

@@ -35,11 +35,34 @@ export default function DataUsageTracker(db) {
         return available;
     }
 
+            async function mostUsedApp(usercode)  {
+                let user = await findUser(usercode);   
+                let usage = await db.any("select * from learner_application_usage join application on application.id = app_id where learner_id = $1", [user.id]); 
+        
+    }
+
+        async function sendDataToAnotherUser(from_usercode_code,to_user_code,airtime)  {
+            let user1=  await findUser(from_usercode_code);
+            let user2=  await findUser(to_user_code);
+            await db.none("update learner set data_balance= data_balance -$1 where usercode=$2",[airtime,from_usercode_code])
+
+
+
+        
+    }
+
+
+
+
+
+
     return {
         registerUser,
         findUser,
         registerAppUsage,
         totalCostPerUser,
-        availableData
+        availableData,
+        mostUsedApp,
+        sendDataToAnotherUser
     }
 }  

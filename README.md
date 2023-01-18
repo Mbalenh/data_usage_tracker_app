@@ -1,5 +1,6 @@
 # Data usage tracker app
 
+[![Node.js CI](https://github.com/Mbalenh/data_usage_tracker_app/actions/workflows/postgres.yml/badge.svg)](https://github.com/Mbalenh/data_usage_tracker_app/actions/workflows/postgres.yml)
 Your community school wants to roll out a data consumption tracker app to help track the usage of data accross all apps that the students are using. 
 
 You are asked to help them create the web application. Each student is sent `500mb` of data per month. The students can top-up if they have run out of data. There's is a usage string for all the apps e.g `("YouTube, Sportify, Zoom, Slack, Khan Academy")` Each app got data usage per minute. 
